@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finesite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- ОСНОВНЫЕ НАСТРОЙКИ --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Градиентный фон как на фото (сиренево-розовый) */
+            background: linear-gradient(135deg, #b28eff 0%, #af93cd 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- ЛОГОТИП (Слева сверху) --- */
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 36px;
+            font-weight: 800; /* Жирный шрифт */
+            color: white;
+            /* Эффект свечения (тени) как на картинке */
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6), 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+            pointer-events: none; /* Чтобы логотип не мешал кликам */
+        }
+
+        /* --- КОНТЕЙНЕР ДЛЯ КНОПОК --- */
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Расстояние между кнопками */
+        }
+
+        /* --- ОБЩИЙ СТИЛЬ КНОПОК --- */
+        .btn {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            font-size: 20px;
+            padding: 15px 0; /* Высота кнопок */
+            border-radius: 15px; /* Скругление углов */
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Легкая тень */
+            transition: transform 0.2s;
+            display: block;
+            text-transform: uppercase; /* Заглавные буквы для верхних кнопок */
+        }
+
+        .btn:hover {
+            transform: scale(1.03); /* Увеличение при наведении */
+        }
+
+        /* --- ЦВЕТА КНОПОК --- */
+        
+        /* 1. Белая кнопка (ТГ КАНАЛ) */
+        .btn-white {
+            background-color: white;
+            width: 220px;
+        }
+
+        /* 2. Розовая кнопка (ЮТ КАНАЛ) */
+        .btn-pink {
+            background-color: #ffcccb; /* Нежный розовый */
+            width: 260px;
+        }
+
+        /* 3. Синяя кнопка (ИНФОРМАЦИЯ) */
+        .btn-blue {
+            background-color: #9fa8da; /* Нежный синий/фиолетовый */
+            width: 380px; /* Эта кнопка шире остальных */
+            text-transform: none; /* Тут обычный текст, не капсом */
+        }
+
+        /* --- СКРЫТЫЙ ПЛЕЕР --- */
+        audio { display: none; }
+
+        /* --- ПОДСКАЗКА О МУЗЫКЕ (Исчезнет после клика) --- */
+        .music-hint {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body onclick="playMusic()">
+
+    <div class="logo">finesite</div>
+
+    <div class="buttons-container">
+        <a href="https://t.me/F1nebr0TGK" target="_blank" class="btn btn-white">
+            ТГ КАНАЛ
+        </a>
+
+        <a href="https://www.youtube.com/@F1nebr0" target="_blank" class="btn btn-pink">
+            ЮТ КАНАЛ
+        </a>
+
+        <a href="https://google.com" target="_blank" class="btn btn-blue">
+            Информация обо мне
+        </a>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="main.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-hint" id="hint">Сайт делал не я а Gemini</div>
+
+    <script>
+        // Скрипт для запуска музыки при первом клике (так требуют браузеры)
+        function playMusic() {
+            var audio = document.getElementById("bgMusic");
+            var hint = document.getElementById("hint");
+            
+            if (audio.paused) {
+                audio.play();
+                hint.style.opacity = '0'; // Скрываем надпись после клика
+            }
+        }
+    </script>
+
+</body>
+</html>
